@@ -18,6 +18,10 @@ export default class Body extends React.Component {
                     <meta name="google" content="notranslate" />
                     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i%7CPT+Serif:400,700" rel="stylesheet"/>
                     <link rel="stylesheet" href={safePrefix('assets/css/main.css')}/>
+                    {(_.get(this.props, 'pageContext.frontmatter.template') === 'post') &&  
+                    _.get(this.props, 'pageContext.frontmatter.canonical_url') && 
+                    <link rel="canonical" href={_.get(this.props, 'pageContext.frontmatter.canonical_url')}/>
+                    }
                 </Helmet>
                   <div id="page" className={'site layout-' + _.get(this.props, 'pageContext.site.siteMetadata.layout_style') + ' palette-' + _.get(this.props, 'pageContext.site.siteMetadata.palette')}>
                     <Header {...this.props} />
